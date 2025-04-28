@@ -1,0 +1,41 @@
+{% extends 'base.html' %} 
+{% block title %}Pokemon Tracker{% endblock %}
+{% block content %} 
+<h3>{{ pokemon.name }}</h3>
+<table class="table table-striped">
+    <tr>
+        <th>National Dex Num</th>
+        <td>{{ pokemon.national_dex_number }}</td>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <td>{{ pokemon.name }}</td>
+    </tr>
+    <tr>
+        <th>Type 1</th>
+        <td>{{ pokemon.type1 }}</td>
+    </tr>
+    <tr>
+        <th>Type 2</th>
+        <td>{{ pokemon.type2 }}</td>
+    </tr>
+    <tr>
+        <th>Legendary</th>
+        <td>{{ pokemon.legendary }}</td>
+    </tr>
+    <tr>
+        <th>Generation</th>
+        <td>{{ pokemon.generation }}</td>
+    </tr>
+    <tr>
+        <th>Games</th>
+        <td>{% for game in pokemon.PokemonGame.all %}{{ game.name }}{% if not forloop.last %}, {% endif %}{% empty %}No games available{% endfor %}</td>
+    </tr>
+    {% if pokemon.notes %}
+    <tr>
+        <th>Notes</th>
+        <td>{{ pokemon.notes }}</td>
+    </tr>
+    {% endif %}
+
+{% endblock %}

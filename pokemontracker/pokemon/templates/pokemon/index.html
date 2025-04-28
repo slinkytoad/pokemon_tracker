@@ -5,19 +5,29 @@
     {% if pokemons %}
         <table class="table table-striped">
             <tr>
+                <th>National Dex Num</th>
                 <th>Name</th>
                 <th>Type 1</th>
                 <th>Type 2</th>
                 <th>Legendary</th>
                 <th>Generation</th>
+                <th>Games</th>
             </tr>
         {% for pokemon in pokemons %}
             <tr>
+                <td><a href="{% url 'pokemon:detail' pokemon.national_dex_number %}">{{ pokemon.national_dex_number }}</a></td>
                 <td>{{ pokemon.name }}</td>
                 <td>{{ pokemon.type1 }}</td>
                 <td>{{ pokemon.type2 }}</td>
                 <td>{{ pokemon.legendary }}</td>
                 <td>{{ pokemon.generation }}</td>
+                <td>
+                    {% for game in pokemon.PokemonGame.all %}
+                        {{ game.name }}{% if not forloop.last %}, {% endif %}
+                    {% empty %}
+                        No games available
+                    {% endfor %}
+                </td>
             </tr>
         {% endfor %}
         </table>

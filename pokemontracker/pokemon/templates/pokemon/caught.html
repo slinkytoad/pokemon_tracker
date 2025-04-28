@@ -1,0 +1,20 @@
+{% extends 'base.html' %} 
+{% load django_bootstrap5 %}
+
+{% block title %}
+    Caught a new Pokemon!
+{% endblock %}
+
+{% block content %}
+<br> 
+{% bootstrap_messages %}
+<div class="container">
+    <form action="/caught/" method="post" class="form">
+        {% csrf_token %}
+
+        {% bootstrap_form form %}
+
+        {% bootstrap_button button_type="submit" content="Catch" %}
+    </form>
+</div>
+{% endblock %}
