@@ -1,0 +1,4 @@
+django
+gunicorn
+dotenv
+django-bootstrap5

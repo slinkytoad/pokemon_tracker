@@ -1,0 +1,29 @@
+{% extends 'base.html' %} 
+{% block title %}Pokemon Tracker{% endblock %}
+{% block content %} 
+    <h2>Pokemon</h2>
+    {% if pokemons %}
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Type 1</th>
+                <th>Type 2</th>
+                <th>Legendary</th>
+                <th>Generation</th>
+            </tr>
+        {% for pokemon in pokemons %}
+            <tr>
+                <td>{{ pokemon.name }}</td>
+                <td>{{ pokemon.type1 }}</td>
+                <td>{{ pokemon.type2 }}</td>
+                <td>{{ pokemon.legendary }}</td>
+                <td>{{ pokemon.generation }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+        <p>Total Pokemon: {{ pokemons.count }}</p>
+    {% else %}
+        <p>No pokemon are available.</p>
+    {% endif %}
+
+{% endblock %}
